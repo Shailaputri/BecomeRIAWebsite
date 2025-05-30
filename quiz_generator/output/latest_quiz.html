@@ -2,71 +2,236 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>🧠 Daily Quiz - 2025-05-29</title>
-  <link rel="icon" href="../../favicon.jpeg" type="image/jpeg">
+  <title>NISM XA Practice Quiz - 2025-05-30</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../static/style.css">
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f5f5f5;
-      padding: 30px;
-      margin: 0;
-    }
-    .quiz-wrapper {
-      max-width: 800px;
+      background-color: #F9FAFB;
+      padding: 40px 24px;
+      max-width: 700px;
       margin: auto;
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      color: #1E293B;
     }
-    h1 {
-      font-size: 2rem;
-      color: #002244;
-      margin-bottom: 30px;
-      text-align: center;
+    h2 {
+      color: #0F172A;
+      font-size: 28px;
+      margin-bottom: 20px;
     }
     .question {
       margin-bottom: 30px;
+      perspective: 1000px;
+      display: none;
     }
-    .question p {
+    .card {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .question.active {
+      display: block;
+    }
+    .card.flip {
+      transform: rotateY(180deg);
+    }
+    .question-content {
+      backface-visibility: hidden;
+      padding: 24px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transform: rotateY(0deg);
+    }
+    .question h4 {
+      font-size: 18px;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
-    .question ul {
-      list-style-type: upper-alpha;
-      padding-left: 20px;
+    .option {
+      margin: 12px 0;
+      display: block;
     }
-    .question ul li {
-      margin-bottom: 8px;
-      color: #333;
+    .option input {
+      margin-right: 10px;
     }
-    .nav-link {
-      text-align: center;
-      margin-bottom: 40px;
+    #nav-buttons {
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
     }
-    .nav-link a {
+    #prev-btn, #next-btn, #submit-btn, #share-btn, .cta-button {
+      padding: 14px 28px;
+      border-radius: 9999px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
       text-decoration: none;
-      background: linear-gradient(90deg, #ffa500, #ff7b00);
+      display: inline-block;
+      font-weight: 600;
+    }
+    #prev-btn, #next-btn, #submit-btn {
+      background: linear-gradient(to right, #FF8C1A, #FF5E62);
       color: white;
-      padding: 10px 20px;
-      border-radius: 50px;
+    }
+    #share-btn {
+      background: #E2E8F0;
+      color: #0F172A;
+      display: none;
+      margin-top: 24px;
+    }
+    #result {
+      margin-top: 40px;
       font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      font-size: 22px;
+    }
+    .message {
+      margin-top: 32px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #EF4444;
+    }
+    .cta-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .cta-button.telegram {
+      background: linear-gradient(to right, #0ea5e9, #2563eb);
+      color: white;
+    }
+    .cta-button.home {
+      background-color: #1e293b;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <div class="nav-link">
-    <a href="../../index.html">← Back to Home</a>
-  </div>
+  <h2>NISM XA Mini Quiz – Test Your Knowledge!</h2>
 
-  <div class="quiz-wrapper">
-    <h1>🧠 Daily Quiz – 2025-05-29</h1>
-    <div class="quiz-body">
-      <div class="question"><p>What is the full form of SEBI?</p><ul><li>A. Securities and Exchange Board of India</li><li>B. Stock Exchange Bureau of India</li><li>C. Securities Enforcement Board of India</li><li>D. Standard Economic Board of India</li></ul></div><div class="question"><p>Which company recently received approval from SEBI for its mutual funds business?</p><ul><li>A. HDFC Asset Management</li><li>B. JioBlackRock Asset Management</li><li>C. Aditya Birla Sun Life Asset Management</li><li>D. ICICI Prudential Asset Management</li></ul></div><div class="question"><p>Who has been appointed as the MD & CEO of the newly formed JioBlackRock Asset Management company?</p><ul><li>A. Mukesh Ambani</li><li>B. Sid Swaminathan</li><li>C. Uday Kotak</li><li>D. Aditya Puri</li></ul></div>
+  <form id="quizForm">
+    
+        <div class="question">
+          <div class="card question-content">
+            <h4>1. What is the concept of diversification in investing?</h4>
+            <label class="option"><input type="radio" name="q1" value="a"> A. Investing all money in a single asset</label>
+<label class="option"><input type="radio" name="q1" value="b"> B. Investing in multiple assets to spread risk</label>
+<label class="option"><input type="radio" name="q1" value="c"> C. Investing in assets with the highest return</label>
+<label class="option"><input type="radio" name="q1" value="d"> D. Investing in assets with the lowest risk</label>
+
+          </div>
+        </div>
+        
+        <div class="question">
+          <div class="card question-content">
+            <h4>2. Who should take the NISM-Series-X-A: Investment Adviser (Level 1) Certification Examination?</h4>
+            <label class="option"><input type="radio" name="q2" value="a"> A. Anyone who wants to become a certified investment advisor</label>
+<label class="option"><input type="radio" name="q2" value="b"> B. Anyone who wants to become a certified accountant</label>
+<label class="option"><input type="radio" name="q2" value="c"> C. Anyone who wants to become a certified stock broker</label>
+<label class="option"><input type="radio" name="q2" value="d"> D. Anyone who wants to become a certified financial analyst</label>
+
+          </div>
+        </div>
+        
+        <div class="question">
+          <div class="card question-content">
+            <h4>3. What is the role and function of the secondary market?</h4>
+            <label class="option"><input type="radio" name="q3" value="a"> A. To issue new securities</label>
+<label class="option"><input type="radio" name="q3" value="b"> B. To provide liquidity for existing securities</label>
+<label class="option"><input type="radio" name="q3" value="c"> C. To regulate the securities market</label>
+<label class="option"><input type="radio" name="q3" value="d"> D. None of the above</label>
+
+          </div>
+        </div>
+        
+
+    <div id="nav-buttons">
+      <button type="button" id="prev-btn" onclick="prevQuestion()" style="display:none;">Previous</button>
+      <button type="button" id="next-btn" onclick="nextQuestion()">Next</button>
+      <button type="button" id="submit-btn" onclick="calculateScore()" style="display:none;">Submit</button>
     </div>
+  </form>
+
+  <div id="result"></div>
+  <div class="message" id="followup-message" style="display:none;">
+    You can do better! Join our NISM Course Today:
   </div>
+  <div class="cta-container" id="cta-buttons" style="display:none;">
+    <a href="https://t.me/becomeRIA" target="_blank" class="cta-button telegram">Start Your Journey</a>
+    <a href="https://permabullish.com/" target="_blank" class="cta-button home">Go to Home</a>
+  </div>
+  <button id="share-btn" onclick="shareScore()">Share Your Score</button>
+
+  <script>
+    const correctAnswers = {"q1": "b", "q2": "a", "q3": "b"};
+    const answerReview = [{"question": "What is the concept of diversification in investing?", "answer": "B. Investing in multiple assets to spread risk"}, {"question": "Who should take the NISM-Series-X-A: Investment Adviser (Level 1) Certification Examination?", "answer": "A. Anyone who wants to become a certified investment advisor"}, {"question": "What is the role and function of the secondary market?", "answer": "B. To provide liquidity for existing securities"}];
+    let currentQuestion = 0;
+    let questions;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      questions = document.querySelectorAll('.question');
+      showQuestion(currentQuestion);
+    });
+
+    function showQuestion(index) {
+      questions.forEach(q => q.classList.remove('active'));
+      if (questions[index]) {
+        questions[index].classList.add('active');
+      }
+      document.getElementById('prev-btn').style.display = index > 0 ? 'inline-block' : 'none';
+      document.getElementById('next-btn').style.display = index < questions.length - 1 ? 'inline-block' : 'none';
+      document.getElementById('submit-btn').style.display = index === questions.length - 1 ? 'inline-block' : 'none';
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+      }
+    }
+
+    function calculateScore() {
+    let score = 0;
+    for (let q in correctAnswers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === correctAnswers[q]) {
+        score++;
+      }
+    }
+
+    document.getElementById('result').innerText = `You scored ${score}/${questions.length}!`;
+    document.getElementById('share-btn').style.display = 'inline-block';
+    document.getElementById('quizForm').style.display = 'none';
+    document.getElementById('followup-message').style.display = 'block';
+    document.getElementById('cta-buttons').style.display = 'flex';
+    document.getElementById('nav-buttons').style.display = 'none';
+
+    const answerList = document.getElementById('answer-review');
+    answerList.innerHTML = '<h3 style="margin-top: 30px;">Correct Answers:</h3>';
+    answerReview.forEach(entry => {
+      const p = document.createElement('p');
+      p.innerHTML = `<strong>${entry.question}</strong><br/>✅ ${entry.answer}`;
+      answerList.appendChild(p);
+    });
+  }
+
+    function shareScore() {
+      const resultText = document.getElementById('result').innerText;
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent(`${resultText} – Take the NISM XA quiz here: ${url}`);
+      const shareLink = `https://wa.me/?text=${text}`;
+      window.open(shareLink, '_blank');
+    }
+  </script>
+  <div id="answer-review" style="margin-top: 32px;"></div>
 </body>
 </html>

@@ -132,7 +132,8 @@
   <button id="share-btn" onclick="shareScore()">Share Your Score</button>
 
   <script>
-    const correctAnswers = {};
+    const correctAnswers = {{ correctAnswers | safe }};
+    const answerReview = {{ answerReview | safe }};
     let currentQuestion = 0;
     let questions;
 
@@ -166,20 +167,29 @@
     }
 
     function calculateScore() {
-      let score = 0;
-      for (let q in correctAnswers) {
-        const selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (selected && selected.value === correctAnswers[q]) {
-          score++;
-        }
+    let score = 0;
+    for (let q in correctAnswers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === correctAnswers[q]) {
+        score++;
       }
-
-      document.getElementById('result').innerText = `You scored ${score}/${questions.length}!`;
-      document.getElementById('share-btn').style.display = 'inline-block';
-      document.getElementById('quizForm').style.display = 'none';
-      document.getElementById('followup-message').style.display = 'block';
-      document.getElementById('cta-buttons').style.display = 'flex';
     }
+
+    document.getElementById('result').innerText = `You scored ${score}/${questions.length}!`;
+    document.getElementById('share-btn').style.display = 'inline-block';
+    document.getElementById('quizForm').style.display = 'none';
+    document.getElementById('followup-message').style.display = 'block';
+    document.getElementById('cta-buttons').style.display = 'flex';
+    document.getElementById('nav-buttons').style.display = 'none';
+
+    const answerList = document.getElementById('answer-review');
+    answerList.innerHTML = '<h3 style="margin-top: 30px;">Correct Answers:</h3>';
+    answerReview.forEach(entry => {
+      const p = document.createElement('p');
+      p.innerHTML = `<strong>${entry.question}</strong><br/>✅ ${entry.answer}`;
+      answerList.appendChild(p);
+    });
+  }
 
     function shareScore() {
       const resultText = document.getElementById('result').innerText;
@@ -189,5 +199,6 @@
       window.open(shareLink, '_blank');
     }
   </script>
+  <div id="answer-review" style="margin-top: 32px;"></div>
 </body>
 </html>

@@ -80,6 +80,45 @@ Format:
         print("⚠️ OpenAI API failed:", e)
         return None
 
+def get_llm_response(prompt):
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.5,
+        )
+        return eval(response.choices[0].message.content)
+    except Exception as e:
+        print("⚠️ Topic generation failed:", e)
+        return []
+
+def generate_mcqs_for_topic(topic_text, topic_name, n):
+    prompt = f"""
+    Generate {n} MCQs from the topic \"{topic_name}\" based on this text:
+    
+    {topic_text}
+    
+    Format:
+    [
+      {{
+        "question": "...",
+        "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+        "answer": "A"
+      }},
+      ...
+    ]
+    """
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.5,
+        )
+        return safe_eval_mcqs(response.choices[0].message.content)
+    except Exception as e:
+        print(f"⚠️ Failed to generate MCQs for topic '{topic_name}':", e)
+        return []
+
 
 # def generate_news_mcqs(date_string, n_questions=2):
 #     prompt = f"""
