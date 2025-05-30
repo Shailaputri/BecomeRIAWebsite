@@ -27,3 +27,4 @@ static/*.png
 *.pdf
 *.png
 *.pdf
+quiz_generator/output/*.html
