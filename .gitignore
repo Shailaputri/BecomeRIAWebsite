@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+*.sqlite3
+# *.log
+*.pyc
+*.so
+*.dylib
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+
+# OS and Editor
+.DS_Store
+.vscode/
+.idea/
+
+
+static/*.png
+*.pdf
+*.png
+*.pdf
