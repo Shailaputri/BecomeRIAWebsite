@@ -3,9 +3,13 @@ import os
 from extract_pdf import extract_content_from_pdf
 from llm_service import generate_mcqs_for_topic, get_llm_response
 
-PDF_PATH = "quiz_generator/input/source.pdf"
-BANK_PATH = "quiz_generator/question_bank/static_question_bank.json"
-INDEX_TRACKER_PATH = "quiz_generator/question_bank/question_index_tracker.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # path to mcq_generator.py
+PROJECT_ROOT = os.path.dirname(BASE_DIR)  # one level up
+BASE_TEMPLATE_PATH = os.path.join(PROJECT_ROOT, "quiz_generator", "templates", "base_quiz.html")
+PDF_PATH = os.path.join(PROJECT_ROOT, "quiz_generator", "input", "source.pdf")
+OUTPUT_FOLDER = os.path.join(PROJECT_ROOT, "quiz_generator")
+QUESTION_BANK_PATH=os.path.join(PROJECT_ROOT, "quiz_generator", "question_bank", "static_question_bank.json")
+QUESTION_BANK_INDEX_PATH=os.path.join(PROJECT_ROOT, "quiz_generator", "question_bank", "question_index_tracker.json")
 
 def build_question_bank(pdf_path=PDF_PATH):
     print("📘 Extracting PDF content...")
@@ -35,9 +39,9 @@ def build_question_bank(pdf_path=PDF_PATH):
 
     os.makedirs("question_bank", exist_ok=True)
 
-    with open(BANK_PATH, "w") as f:
+    with open(QUESTION_BANK_PATH, "w") as f:
         json.dump(question_bank, f, indent=2)
-    with open(INDEX_TRACKER_PATH, "w") as f:
+    with open(QUESTION_BANK_INDEX_PATH, "w") as f:
         json.dump(tracker, f, indent=2)
 
     print("✅ Question bank and index tracker saved.")

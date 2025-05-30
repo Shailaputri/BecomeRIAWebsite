@@ -4,13 +4,16 @@ from extract_pdf import extract_content_from_pdf
 from llm_service import generate_mcqs_from_text, generate_news_mcqs_from_sebi_feed
 # from render import render_html
 from datetime import date
+import datetime
+print(f"[{datetime.datetime.now()}] Started generating quiz")
 
-APP_PATH="quiz_generator"
-BASE_TEMPLATE_PATH = os.path.join(APP_PATH, "templates/base_quiz.html")
-PDF_PATH = os.path.join(APP_PATH, "input/source.pdf")
-OUTPUT_FOLDER = os.path.join(APP_PATH, "output")
-QUESTION_BANK_PATH=os.path.join(APP_PATH, "question_bank/static_question_bank.json")
-QUESTION_BANK_INDEX_PATH=os.path.join(APP_PATH, "question_bank/question_index_tracker.json")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # path to mcq_generator.py
+PROJECT_ROOT = os.path.dirname(BASE_DIR)  # one level up
+BASE_TEMPLATE_PATH = os.path.join(PROJECT_ROOT, "quiz_generator", "templates", "base_quiz.html")
+PDF_PATH = os.path.join(PROJECT_ROOT, "quiz_generator", "input", "source.pdf")
+OUTPUT_FOLDER = os.path.join(PROJECT_ROOT, "quiz_generator")
+QUESTION_BANK_PATH=os.path.join(PROJECT_ROOT, "quiz_generator", "question_bank", "static_question_bank.json")
+QUESTION_BANK_INDEX_PATH=os.path.join(PROJECT_ROOT, "quiz_generator", "question_bank", "question_index_tracker.json")
 
 def render_html_old(mcqs, date_str):
     with open(BASE_TEMPLATE_PATH, "r", encoding="utf-8") as f:

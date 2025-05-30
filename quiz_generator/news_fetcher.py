@@ -10,7 +10,10 @@ RSS_FEEDS = [
     "https://economictimes.indiatimes.com/rss/wealth/rssfeedstopstories.cms",
 ]
 
-SEEN_TITLES_PATH = "quiz_generator/news_cache/seen_titles.json"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # path to mcq_generator.py
+PROJECT_ROOT = os.path.dirname(BASE_DIR)  # one level up
+SEEN_TITLES_PATH = os.path.join(PROJECT_ROOT, "quiz_generator", "news_cache", "seen_titles.json")
 
 def load_seen_titles():
     if os.path.exists(SEEN_TITLES_PATH):
