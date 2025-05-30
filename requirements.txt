@@ -1,0 +1,3 @@
+PyMuPDF==1.23.7  # for PDF parsing
+openai           # or your LLM SDK
+python-dotenv==1.1.0
