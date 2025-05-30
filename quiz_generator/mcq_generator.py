@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # path to mcq_generator.p
 PROJECT_ROOT = os.path.dirname(BASE_DIR)  # one level up
 BASE_TEMPLATE_PATH = os.path.join(PROJECT_ROOT, "quiz_generator", "templates", "base_quiz.html")
 PDF_PATH = os.path.join(PROJECT_ROOT, "quiz_generator", "input", "source.pdf")
-OUTPUT_FOLDER = os.path.join(PROJECT_ROOT, "quiz_generator")
+OUTPUT_FOLDER = os.path.join(PROJECT_ROOT, "quiz_generator", "output")
 QUESTION_BANK_PATH=os.path.join(PROJECT_ROOT, "quiz_generator", "question_bank", "static_question_bank.json")
 QUESTION_BANK_INDEX_PATH=os.path.join(PROJECT_ROOT, "quiz_generator", "question_bank", "question_index_tracker.json")
 
@@ -141,8 +141,8 @@ def main():
         all_qs = static_qs + dynamic_qs
 
     html = render_html(all_qs, date_str)
-    save_html(html, f"quiz_{date_str}.html")
-    save_html(html, "latest_quiz.html")
+    save_html(html, os.path.join(OUTPUT_FOLDER, f"quiz_{date_str}.html"))
+    save_html(html, os.path.join(OUTPUT_FOLDER, "latest_quiz.html"))
     print(f"✅ Quiz generated for {date_str}")
 
 

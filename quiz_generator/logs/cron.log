@@ -12,3 +12,9 @@ cron ran at Fri May 30 16:41:00 IST 2025
 ⚠️ OpenAI API failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: Sample. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
 ⚠️ Using only static questions due to LLM failure.
 ✅ Quiz generated for 2025-05-30
+cron ran at Fri May 30 17:48:57 IST 2025
+[2025-05-30 17:48:57.537939] Started generating quiz
+✅ Quiz generated for 2025-05-30
+cron ran at Fri May 30 17:57:46 IST 2025
+[2025-05-30 17:57:46.652799] Started generating quiz
+✅ Quiz generated for 2025-05-30
