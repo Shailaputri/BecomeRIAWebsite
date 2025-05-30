@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NISM XA Practice Quiz - 2025-05-30</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F9FAFB;
+      padding: 40px 24px;
+      max-width: 700px;
+      margin: auto;
+      color: #1E293B;
+    }
+    h2 {
+      color: #0F172A;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .question {
+      margin-bottom: 30px;
+      perspective: 1000px;
+      display: none;
+    }
+    .card {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .question.active {
+      display: block;
+    }
+    .card.flip {
+      transform: rotateY(180deg);
+    }
+    .question-content {
+      backface-visibility: hidden;
+      padding: 24px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transform: rotateY(0deg);
+    }
+    .question h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .option {
+      margin: 12px 0;
+      display: block;
+    }
+    .option input {
+      margin-right: 10px;
+    }
+    #nav-buttons {
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    #prev-btn, #next-btn, #submit-btn, #share-btn, .cta-button {
+      padding: 14px 28px;
+      border-radius: 9999px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+    }
+    #prev-btn, #next-btn, #submit-btn {
+      background: linear-gradient(to right, #FF8C1A, #FF5E62);
+      color: white;
+    }
+    #share-btn {
+      background: #E2E8F0;
+      color: #0F172A;
+      display: none;
+      margin-top: 24px;
+    }
+    #result {
+      margin-top: 40px;
+      font-weight: bold;
+      font-size: 22px;
+    }
+    .message {
+      margin-top: 32px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #EF4444;
+    }
+    .cta-container {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .cta-button.telegram {
+      background: linear-gradient(to right, #0ea5e9, #2563eb);
+      color: white;
+    }
+    .cta-button.home {
+      background-color: #1e293b;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>NISM XA Mini Quiz – Test Your Knowledge!</h2>
+
+  <form id="quizForm">
+    
+        <div class="question">
+          <div class="card question-content">
+            <h4>1. What is the concept of Time Value of Money?</h4>
+            <label class="option"><input type="radio" name="q1" value="a"> A. The idea that money available at the present time is worth more than the same amount in the future</label>
+<label class="option"><input type="radio" name="q1" value="b"> B. The idea that money is only valuable when it is invested</label>
+<label class="option"><input type="radio" name="q1" value="c"> C. The idea that the value of money decreases over time due to inflation</label>
+<label class="option"><input type="radio" name="q1" value="d"> D. The idea that the value of money is determined by the stock market</label>
+
+          </div>
+        </div>
+        
+        <div class="question">
+          <div class="card question-content">
+            <h4>2. Who should take the NISM-Series-X-A: Investment Adviser (Level 1) Certification Examination?</h4>
+            <label class="option"><input type="radio" name="q2" value="a"> A. Anyone who wants to become a certified investment advisor</label>
+<label class="option"><input type="radio" name="q2" value="b"> B. Anyone who wants to become a certified accountant</label>
+<label class="option"><input type="radio" name="q2" value="c"> C. Anyone who wants to become a certified stock broker</label>
+<label class="option"><input type="radio" name="q2" value="d"> D. Anyone who wants to become a certified financial analyst</label>
+
+          </div>
+        </div>
+        
+        <div class="question">
+          <div class="card question-content">
+            <h4>3. What is the role and impact of debt in cash flow management?</h4>
+            <label class="option"><input type="radio" name="q3" value="a"> A. It increases the cash inflow</label>
+<label class="option"><input type="radio" name="q3" value="b"> B. It decreases the cash outflow</label>
+<label class="option"><input type="radio" name="q3" value="c"> C. It increases the cash outflow</label>
+<label class="option"><input type="radio" name="q3" value="d"> D. None of the above</label>
+
+          </div>
+        </div>
+        
+        <div class="question">
+          <div class="card question-content">
+            <h4>4. Who is the top Trump aide's wife going to start working for as of May 2025?</h4>
+            <label class="option"><input type="radio" name="q4" value="a"> A. Elon Musk</label>
+<label class="option"><input type="radio" name="q4" value="b"> B. Jeff Bezos</label>
+<label class="option"><input type="radio" name="q4" value="c"> C. Warren Buffet</label>
+<label class="option"><input type="radio" name="q4" value="d"> D. Bill Gates</label>
+
+          </div>
+        </div>
+        
+        <div class="question">
+          <div class="card question-content">
+            <h4>5. What was the status of India's growth in May 2025, according to the CEA, despite global economic downturn?</h4>
+            <label class="option"><input type="radio" name="q5" value="a"> A. Declining</label>
+<label class="option"><input type="radio" name="q5" value="b"> B. Stagnant</label>
+<label class="option"><input type="radio" name="q5" value="c"> C. Fluctuating</label>
+<label class="option"><input type="radio" name="q5" value="d"> D. Intact</label>
+
+          </div>
+        </div>
+        
+
+    <div id="nav-buttons">
+      <button type="button" id="prev-btn" onclick="prevQuestion()" style="display:none;">Previous</button>
+      <button type="button" id="next-btn" onclick="nextQuestion()">Next</button>
+      <button type="button" id="submit-btn" onclick="calculateScore()" style="display:none;">Submit</button>
+    </div>
+  </form>
+
+  <div id="result"></div>
+  <div class="message" id="followup-message" style="display:none;">
+    You can do better! Join our NISM Course Today:
+  </div>
+  <div class="cta-container" id="cta-buttons" style="display:none;">
+    <a href="https://t.me/becomeRIA" target="_blank" class="cta-button telegram">Start Your Journey</a>
+    <a href="https://permabullish.com/" target="_blank" class="cta-button home">Go to Home</a>
+  </div>
+  <button id="share-btn" onclick="shareScore()">Share Your Score</button>
+
+  <script>
+    const correctAnswers = {"q1": "a", "q2": "a", "q3": "c", "q4": "a", "q5": "d"};
+    const answerReview = [{"question": "What is the concept of Time Value of Money?", "answer": "A. The idea that money available at the present time is worth more than the same amount in the future"}, {"question": "Who should take the NISM-Series-X-A: Investment Adviser (Level 1) Certification Examination?", "answer": "A. Anyone who wants to become a certified investment advisor"}, {"question": "What is the role and impact of debt in cash flow management?", "answer": "C. It increases the cash outflow"}, {"question": "Who is the top Trump aide's wife going to start working for as of May 2025?", "answer": "A. Elon Musk"}, {"question": "What was the status of India's growth in May 2025, according to the CEA, despite global economic downturn?", "answer": "D. Intact"}];
+    let currentQuestion = 0;
+    let questions;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      questions = document.querySelectorAll('.question');
+      showQuestion(currentQuestion);
+    });
+
+    function showQuestion(index) {
+      questions.forEach(q => q.classList.remove('active'));
+      if (questions[index]) {
+        questions[index].classList.add('active');
+      }
+      document.getElementById('prev-btn').style.display = index > 0 ? 'inline-block' : 'none';
+      document.getElementById('next-btn').style.display = index < questions.length - 1 ? 'inline-block' : 'none';
+      document.getElementById('submit-btn').style.display = index === questions.length - 1 ? 'inline-block' : 'none';
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+      }
+    }
+
+    function calculateScore() {
+    let score = 0;
+    for (let q in correctAnswers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === correctAnswers[q]) {
+        score++;
+      }
+    }
+
+    document.getElementById('result').innerText = `You scored ${score}/${questions.length}!`;
+    document.getElementById('share-btn').style.display = 'inline-block';
+    document.getElementById('quizForm').style.display = 'none';
+    document.getElementById('followup-message').style.display = 'block';
+    document.getElementById('cta-buttons').style.display = 'flex';
+    document.getElementById('nav-buttons').style.display = 'none';
+
+    const answerList = document.getElementById('answer-review');
+    answerList.innerHTML = '<h3 style="margin-top: 30px;">Correct Answers:</h3>';
+    answerReview.forEach(entry => {
+      const p = document.createElement('p');
+      p.innerHTML = `<strong>${entry.question}</strong><br/>✅ ${entry.answer}`;
+      answerList.appendChild(p);
+    });
+  }
+
+    function shareScore() {
+      const resultText = document.getElementById('result').innerText;
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent(`${resultText} – Take the NISM XA quiz here: ${url}`);
+      const shareLink = `https://wa.me/?text=${text}`;
+      window.open(shareLink, '_blank');
+    }
+  </script>
+  <div id="answer-review" style="margin-top: 32px;"></div>
+</body>
+</html>
