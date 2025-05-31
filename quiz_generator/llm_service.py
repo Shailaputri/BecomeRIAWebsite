@@ -49,25 +49,32 @@ def generate_news_mcqs_from_sebi_feed(n_questions=2):
     news_summary = fetch_latest_sebi_news()
 
     prompt = f"""
-You are a quiz master. Based on the following news articles related to SEBI and investments in India, generate {n_questions} multiple choice questions.
+    You are a quiz master. Based on the following news articles related to SEBI and investments in India, generate {n_questions} multiple choice questions that test core concepts relevant for the NISM exam and knowledge of latest developments in the field.
 
-Each question must have:
-- 4 options (A to D)
-- 1 correct answer
+    Most importantly focus on evaluating a learner's understanding of:
+    - Portfolio management
+    - Investment instruments and strategies
+    - Financial planning principles
+    - Wealth management frameworks
+    - Wealth creation strategies and regulatory updates
 
-News Articles:
-{news_summary}
+    Each question must:
+    - Be based on or inspired by distinct article contents
+    - Include 4 options (A to D)
+    - Include only 1 correct answer
 
-Format:
-[
-  {{
-    "question": "...",
-    "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
-    "answer": "A"
-  }},
-  ...
-]
-"""
+    News Articles:
+    {news_summary}
+
+    Format:
+    [
+      {{
+        "question": "...",
+        "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+        "answer": "A"
+      }},
+      ...
+        ]"""
     try:
         response = client.chat.completions.create(
             model="gpt-4",
@@ -94,11 +101,29 @@ def get_llm_response(prompt):
 
 def generate_mcqs_for_topic(topic_text, topic_name, n):
     prompt = f"""
-    Generate {n} MCQs from the topic \"{topic_name}\" based on this text:
+    You are a certified NISM-XA quiz master. 
+    Generate **exactly {n}**  high-quality multiple choice questions (MCQs) relevant to aspirants preparing to become SEBI-registered financial advisors based on topic \"{topic_name}\" and from the textbook mentioned below.
+    ⚠️ IMPORTANT: You must generate **EXACTLY {n} questions**. Do not stop early. Do not generate fewer.
+    Focus on creating a **variety of question types**, including:
+    - **"What" questions** (definitions, facts, concepts)
+    - **"Why" questions** (reasons, implications)
+    - **"How" questions** (processes, methods)
+    - **"Where/When" questions** (contextual, regulatory timelines or locations)
+    - Scenario-based application questions that test practical decision-making
+    - **must not** keep questions like what is the purpose/passing marks etc that tests knowledge about conduct of NISM-Series-X-A: Investment Adviser (Level 1) Certification Examination.
     
+    Each question must:
+    - Check the conceptual clarity of the topic_name. 
+    - Include 4 options (A to D) 
+    - Keep only 20% of questions where D.All of the above is the answer. 
+    - Include only 1 correct answer
+
+    Use the context below to generate meaningful, exam-relevant MCQs.
+
+    Textbook:
     {topic_text}
     
-    Format:
+    Return only the output in this format:
     [
       {{
         "question": "...",
@@ -112,7 +137,8 @@ def generate_mcqs_for_topic(topic_text, topic_name, n):
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.5,
+            temperature=0.7,
+            max_tokens = 3000,
         )
         return safe_eval_mcqs(response.choices[0].message.content)
     except Exception as e:

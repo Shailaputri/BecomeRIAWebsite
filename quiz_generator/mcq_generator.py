@@ -60,7 +60,7 @@ def render_html(mcqs, date_str):
     answer_review = []
     for i, q in enumerate(mcqs, 1):
         qname = f"q{i}"
-        correct_answers_dict[qname] = q["answer"].lower()
+        correct_answers_dict[qname] = q["answer"].strip().lower()[0]
 
         options_html = ""
         for j, opt in enumerate(q["options"]):

@@ -2,19 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NISM XA Practice Quiz - 2025-05-30</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NISM XA Quiz - 2025-05-31</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-light: #F9FAFB;
+      --text-light: #1E293B;
+      --bg-dark: #0F172A;
+      --text-dark: #F1F5F9;
+    }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #F9FAFB;
-      padding: 40px 24px;
-      max-width: 700px;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      padding: 20px 16px;
       margin: auto;
-      color: #1E293B;
+      transition: background 0.3s, color 0.3s;
+    }
+    @media (min-width: 600px) {
+      body {
+        max-width: 700px;
+        padding: 40px 24px;
+      }
+    }
+    .dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
     h2 {
-      color: #0F172A;
       font-size: 28px;
       margin-bottom: 20px;
     }
@@ -59,6 +75,7 @@
       display: flex;
       justify-content: space-between;
       gap: 12px;
+      flex-wrap: wrap;
     }
     #prev-btn, #next-btn, #submit-btn, #share-btn, .cta-button {
       padding: 14px 28px;
@@ -106,64 +123,71 @@
       background-color: #1e293b;
       color: white;
     }
+    @media (max-width: 480px) {
+      #prev-btn, #next-btn, #submit-btn, #share-btn, .cta-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
+  <button onclick="toggleDarkMode()" style="float: right; margin-top: -20px;">🌓</button>
   <h2>NISM XA Mini Quiz – Test Your Knowledge!</h2>
 
   <form id="quizForm">
     
         <div class="question">
           <div class="card question-content">
-            <h4>1. What is the concept of Time Value of Money?</h4>
-            <label class="option"><input type="radio" name="q1" value="a"> A. The idea that money available at the present time is worth more than the same amount in the future</label>
-<label class="option"><input type="radio" name="q1" value="b"> B. The idea that money is only valuable when it is invested</label>
-<label class="option"><input type="radio" name="q1" value="c"> C. The idea that the value of money decreases over time due to inflation</label>
-<label class="option"><input type="radio" name="q1" value="d"> D. The idea that the value of money is determined by the stock market</label>
+            <h4>1. What is the main purpose of personal financial planning?</h4>
+            <label class="option"><input type="radio" name="q1" value="a"> A. To increase income</label>
+<label class="option"><input type="radio" name="q1" value="b"> B. To ensure financial security</label>
+<label class="option"><input type="radio" name="q1" value="c"> C. To avoid taxes</label>
+<label class="option"><input type="radio" name="q1" value="d"> D. To invest in risky ventures</label>
 
           </div>
         </div>
         
         <div class="question">
           <div class="card question-content">
-            <h4>2. Who should take the NISM-Series-X-A: Investment Adviser (Level 1) Certification Examination?</h4>
-            <label class="option"><input type="radio" name="q2" value="a"> A. Anyone who wants to become a certified investment advisor</label>
-<label class="option"><input type="radio" name="q2" value="b"> B. Anyone who wants to become a certified accountant</label>
-<label class="option"><input type="radio" name="q2" value="c"> C. Anyone who wants to become a certified stock broker</label>
-<label class="option"><input type="radio" name="q2" value="d"> D. Anyone who wants to become a certified financial analyst</label>
+            <h4>2. What is the concept of Financial Planning?</h4>
+            <label class="option"><input type="radio" name="q2" value="a"> A. A process to manage your financial resources throughout your life to achieve your financial goals</label>
+<label class="option"><input type="radio" name="q2" value="b"> B. A strategy to increase your income</label>
+<label class="option"><input type="radio" name="q2" value="c"> C. A plan to reduce taxes</label>
+<label class="option"><input type="radio" name="q2" value="d"> D. A method of investing in stocks</label>
 
           </div>
         </div>
         
         <div class="question">
           <div class="card question-content">
-            <h4>3. What is the role and impact of debt in cash flow management?</h4>
-            <label class="option"><input type="radio" name="q3" value="a"> A. It increases the cash inflow</label>
-<label class="option"><input type="radio" name="q3" value="b"> B. It decreases the cash outflow</label>
-<label class="option"><input type="radio" name="q3" value="c"> C. It increases the cash outflow</label>
-<label class="option"><input type="radio" name="q3" value="d"> D. None of the above</label>
+            <h4>3. What is the purpose of financial planning?</h4>
+            <label class="option"><input type="radio" name="q3" value="a"> A. To manage income effectively</label>
+<label class="option"><input type="radio" name="q3" value="b"> B. To secure financial future</label>
+<label class="option"><input type="radio" name="q3" value="c"> C. To reduce financial risks</label>
+<label class="option"><input type="radio" name="q3" value="d"> D. All of the above</label>
 
           </div>
         </div>
         
         <div class="question">
           <div class="card question-content">
-            <h4>4. Who is the top Trump aide's wife going to start working for as of May 2025?</h4>
-            <label class="option"><input type="radio" name="q4" value="a"> A. Elon Musk</label>
-<label class="option"><input type="radio" name="q4" value="b"> B. Jeff Bezos</label>
-<label class="option"><input type="radio" name="q4" value="c"> C. Warren Buffet</label>
-<label class="option"><input type="radio" name="q4" value="d"> D. Bill Gates</label>
+            <h4>4. What are the new rules notified by SEBI in relation to derivative trading limits?</h4>
+            <label class="option"><input type="radio" name="q4" value="a"> A. The limits have been reduced to prevent excessive risk-taking</label>
+<label class="option"><input type="radio" name="q4" value="b"> B. The limits have been increased to encourage more participation</label>
+<label class="option"><input type="radio" name="q4" value="c"> C. The limits have been removed altogether to promote free trading</label>
+<label class="option"><input type="radio" name="q4" value="d"> D. The limits are now flexible and depend on the risk profile of the investor</label>
 
           </div>
         </div>
         
         <div class="question">
           <div class="card question-content">
-            <h4>5. What was the status of India's growth in May 2025, according to the CEA, despite global economic downturn?</h4>
-            <label class="option"><input type="radio" name="q5" value="a"> A. Declining</label>
-<label class="option"><input type="radio" name="q5" value="b"> B. Stagnant</label>
-<label class="option"><input type="radio" name="q5" value="c"> C. Fluctuating</label>
-<label class="option"><input type="radio" name="q5" value="d"> D. Intact</label>
+            <h4>5. Considering the Trump-Era turbulence and its impact on Wall Street, what has been one of the biggest challenges for macro traders as of late?</h4>
+            <label class="option"><input type="radio" name="q5" value="a"> A. The steady and predictable nature of the market</label>
+<label class="option"><input type="radio" name="q5" value="b"> B. The constant shifting of market narratives and unpredictability of policy decisions</label>
+<label class="option"><input type="radio" name="q5" value="c"> C. The introduction of new financial instruments</label>
+<label class="option"><input type="radio" name="q5" value="d"> D. The stability of the US economy</label>
 
           </div>
         </div>
@@ -186,15 +210,18 @@
   </div>
   <button id="share-btn" onclick="shareScore()">Share Your Score</button>
 
+  <div id="answer-review" style="margin-top: 32px;"></div>
+
   <script>
-    const correctAnswers = {"q1": "a", "q2": "a", "q3": "c", "q4": "a", "q5": "d"};
-    const answerReview = [{"question": "What is the concept of Time Value of Money?", "answer": "A. The idea that money available at the present time is worth more than the same amount in the future"}, {"question": "Who should take the NISM-Series-X-A: Investment Adviser (Level 1) Certification Examination?", "answer": "A. Anyone who wants to become a certified investment advisor"}, {"question": "What is the role and impact of debt in cash flow management?", "answer": "C. It increases the cash outflow"}, {"question": "Who is the top Trump aide's wife going to start working for as of May 2025?", "answer": "A. Elon Musk"}, {"question": "What was the status of India's growth in May 2025, according to the CEA, despite global economic downturn?", "answer": "D. Intact"}];
+    const correctAnswers = {"q1": "b", "q2": "a", "q3": "d", "q4": "a", "q5": "b"};
+    const answerReview = [{"question": "What is the main purpose of personal financial planning?", "answer": "B. To ensure financial security"}, {"question": "What is the concept of Financial Planning?", "answer": "A. A process to manage your financial resources throughout your life to achieve your financial goals"}, {"question": "What is the purpose of financial planning?", "answer": "D. All of the above"}, {"question": "What are the new rules notified by SEBI in relation to derivative trading limits?", "answer": "A. The limits have been reduced to prevent excessive risk-taking"}, {"question": "Considering the Trump-Era turbulence and its impact on Wall Street, what has been one of the biggest challenges for macro traders as of late?", "answer": "B. The constant shifting of market narratives and unpredictability of policy decisions"}];
     let currentQuestion = 0;
     let questions;
 
     document.addEventListener("DOMContentLoaded", function () {
       questions = document.querySelectorAll('.question');
       showQuestion(currentQuestion);
+      initSwipeHandlers();
     });
 
     function showQuestion(index) {
@@ -222,29 +249,35 @@
     }
 
     function calculateScore() {
-    let score = 0;
-    for (let q in correctAnswers) {
-      const selected = document.querySelector(`input[name="${q}"]:checked`);
-      if (selected && selected.value === correctAnswers[q]) {
-        score++;
+      let score = 0;
+      for (let q in correctAnswers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === correctAnswers[q]) {
+          score++;
+        }
       }
+
+      document.getElementById('result').innerText = `You scored ${score}/${questions.length}!`;
+      document.getElementById('share-btn').style.display = 'inline-block';
+      document.getElementById('quizForm').style.display = 'none';
+      const followupMsg = document.getElementById('followup-message');
+      followupMsg.style.display = 'block';
+      if (score === questions.length) {
+        followupMsg.innerText = "🎉 You scored full marks! To continue increasing your knowledge, join our NISM Course today:";
+      } else {
+        followupMsg.innerText = "You can do better! Join our NISM Course Today:";
+      }
+      document.getElementById('cta-buttons').style.display = 'flex';
+      document.getElementById('nav-buttons').style.display = 'none';
+
+      const answerList = document.getElementById('answer-review');
+      answerList.innerHTML = '<h3 style="margin-top: 30px;">Correct Answers:</h3>';
+      answerReview.forEach(entry => {
+        const p = document.createElement('p');
+        p.innerHTML = `<strong>${entry.question}</strong><br/>✅ ${entry.answer}`;
+        answerList.appendChild(p);
+      });
     }
-
-    document.getElementById('result').innerText = `You scored ${score}/${questions.length}!`;
-    document.getElementById('share-btn').style.display = 'inline-block';
-    document.getElementById('quizForm').style.display = 'none';
-    document.getElementById('followup-message').style.display = 'block';
-    document.getElementById('cta-buttons').style.display = 'flex';
-    document.getElementById('nav-buttons').style.display = 'none';
-
-    const answerList = document.getElementById('answer-review');
-    answerList.innerHTML = '<h3 style="margin-top: 30px;">Correct Answers:</h3>';
-    answerReview.forEach(entry => {
-      const p = document.createElement('p');
-      p.innerHTML = `<strong>${entry.question}</strong><br/>✅ ${entry.answer}`;
-      answerList.appendChild(p);
-    });
-  }
 
     function shareScore() {
       const resultText = document.getElementById('result').innerText;
@@ -253,7 +286,30 @@
       const shareLink = `https://wa.me/?text=${text}`;
       window.open(shareLink, '_blank');
     }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function initSwipeHandlers() {
+      let touchstartX = 0;
+      let touchendX = 0;
+
+      document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+      });
+
+      document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        const threshold = 50;
+        if (touchendX < touchstartX - threshold) nextQuestion();
+        if (touchendX > touchstartX + threshold) prevQuestion();
+      }
+    }
   </script>
-  <div id="answer-review" style="margin-top: 32px;"></div>
 </body>
 </html>

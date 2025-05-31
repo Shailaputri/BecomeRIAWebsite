@@ -2,19 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NISM XA Quiz - {{date}}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-light: #F9FAFB;
+      --text-light: #1E293B;
+      --bg-dark: #0F172A;
+      --text-dark: #F1F5F9;
+    }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #F9FAFB;
-      padding: 40px 24px;
-      max-width: 700px;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      padding: 20px 16px;
       margin: auto;
-      color: #1E293B;
+      transition: background 0.3s, color 0.3s;
+    }
+    @media (min-width: 600px) {
+      body {
+        max-width: 700px;
+        padding: 40px 24px;
+      }
+    }
+    .dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
     h2 {
-      color: #0F172A;
       font-size: 28px;
       margin-bottom: 20px;
     }
@@ -59,6 +75,7 @@
       display: flex;
       justify-content: space-between;
       gap: 12px;
+      flex-wrap: wrap;
     }
     #prev-btn, #next-btn, #submit-btn, #share-btn, .cta-button {
       padding: 14px 28px;
@@ -106,9 +123,16 @@
       background-color: #1e293b;
       color: white;
     }
+    @media (max-width: 480px) {
+      #prev-btn, #next-btn, #submit-btn, #share-btn, .cta-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
+  <button onclick="toggleDarkMode()" style="float: right; margin-top: -20px;">🌓</button>
   <h2>NISM XA Mini Quiz – Test Your Knowledge!</h2>
 
   <form id="quizForm">
@@ -131,6 +155,8 @@
   </div>
   <button id="share-btn" onclick="shareScore()">Share Your Score</button>
 
+  <div id="answer-review" style="margin-top: 32px;"></div>
+
   <script>
     const correctAnswers = {{ correctAnswers | safe }};
     const answerReview = {{ answerReview | safe }};
@@ -140,6 +166,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       questions = document.querySelectorAll('.question');
       showQuestion(currentQuestion);
+      initSwipeHandlers();
     });
 
     function showQuestion(index) {
@@ -167,29 +194,35 @@
     }
 
     function calculateScore() {
-    let score = 0;
-    for (let q in correctAnswers) {
-      const selected = document.querySelector(`input[name="${q}"]:checked`);
-      if (selected && selected.value === correctAnswers[q]) {
-        score++;
+      let score = 0;
+      for (let q in correctAnswers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === correctAnswers[q]) {
+          score++;
+        }
       }
+
+      document.getElementById('result').innerText = `You scored ${score}/${questions.length}!`;
+      document.getElementById('share-btn').style.display = 'inline-block';
+      document.getElementById('quizForm').style.display = 'none';
+      const followupMsg = document.getElementById('followup-message');
+      followupMsg.style.display = 'block';
+      if (score === questions.length) {
+        followupMsg.innerText = "🎉 You scored full marks! To continue increasing your knowledge, join our NISM Course today:";
+      } else {
+        followupMsg.innerText = "You can do better! Join our NISM Course Today:";
+      }
+      document.getElementById('cta-buttons').style.display = 'flex';
+      document.getElementById('nav-buttons').style.display = 'none';
+
+      const answerList = document.getElementById('answer-review');
+      answerList.innerHTML = '<h3 style="margin-top: 30px;">Correct Answers:</h3>';
+      answerReview.forEach(entry => {
+        const p = document.createElement('p');
+        p.innerHTML = `<strong>${entry.question}</strong><br/>✅ ${entry.answer}`;
+        answerList.appendChild(p);
+      });
     }
-
-    document.getElementById('result').innerText = `You scored ${score}/${questions.length}!`;
-    document.getElementById('share-btn').style.display = 'inline-block';
-    document.getElementById('quizForm').style.display = 'none';
-    document.getElementById('followup-message').style.display = 'block';
-    document.getElementById('cta-buttons').style.display = 'flex';
-    document.getElementById('nav-buttons').style.display = 'none';
-
-    const answerList = document.getElementById('answer-review');
-    answerList.innerHTML = '<h3 style="margin-top: 30px;">Correct Answers:</h3>';
-    answerReview.forEach(entry => {
-      const p = document.createElement('p');
-      p.innerHTML = `<strong>${entry.question}</strong><br/>✅ ${entry.answer}`;
-      answerList.appendChild(p);
-    });
-  }
 
     function shareScore() {
       const resultText = document.getElementById('result').innerText;
@@ -198,7 +231,30 @@
       const shareLink = `https://wa.me/?text=${text}`;
       window.open(shareLink, '_blank');
     }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function initSwipeHandlers() {
+      let touchstartX = 0;
+      let touchendX = 0;
+
+      document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+      });
+
+      document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+
+      function handleSwipe() {
+        const threshold = 50;
+        if (touchendX < touchstartX - threshold) nextQuestion();
+        if (touchendX > touchstartX + threshold) prevQuestion();
+      }
+    }
   </script>
-  <div id="answer-review" style="margin-top: 32px;"></div>
 </body>
 </html>
