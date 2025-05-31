@@ -49,7 +49,7 @@ def generate_news_mcqs_from_sebi_feed(n_questions=2):
     news_summary = fetch_latest_sebi_news()
 
     prompt = f"""
-    You are a quiz master. Based on the following news articles related to SEBI and investments in India, generate {n_questions} multiple choice questions that test core concepts relevant for the NISM exam and knowledge of latest developments in the field.
+    You are a quiz master. Based on the following news articles related to SEBI and investments in India, generate **exactly {n_questions}** multiple choice questions that test core concepts relevant for the NISM exam and knowledge of latest developments in the **financial domain**.
 
     Most importantly focus on evaluating a learner's understanding of:
     - Portfolio management
@@ -59,9 +59,12 @@ def generate_news_mcqs_from_sebi_feed(n_questions=2):
     - Wealth creation strategies and regulatory updates
 
     Each question must:
+    - Ensure each question is inspired by a distinct article or idea from the summary but is standalone and self-contained.
+    - Do not include phrases like "as described in the article" or refer to the source explicitly.
     - Be based on or inspired by distinct article contents
     - Include 4 options (A to D)
     - Include only 1 correct answer
+    - Ensure clarity and alignment with concepts expected in the NISM XA exam.
 
     News Articles:
     {news_summary}
