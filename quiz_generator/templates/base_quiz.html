@@ -226,9 +226,9 @@
 
     function shareScore() {
       const resultText = document.getElementById('result').innerText;
-      const url = encodeURIComponent(window.location.href);
-      const text = encodeURIComponent(`${resultText} – Take the NISM XA quiz here: ${url}`);
-      const shareLink = `https://wa.me/?text=${text}`;
+      const url = window.location.href;
+      const message = `${resultText} – Take the NISM XA quiz here: ${url}`;
+      const shareLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
       window.open(shareLink, '_blank');
     }
 
